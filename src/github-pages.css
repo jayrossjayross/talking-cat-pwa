@@ -1,0 +1,8 @@
+/* GitHub Pages hosts the offline game only; the secure AI backend remains on Vercel. */
+.github-pages .mode-tabs {
+  grid-template-columns: 1fr;
+}
+
+.github-pages .mode-tabs button:nth-child(2) {
+  display: none;
+}
