@@ -11,7 +11,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['mochi-icon.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
         navigateFallbackDenylist: [/^\/api\//],
@@ -27,8 +27,8 @@ export default defineConfig({
         start_url: base,
         scope: base,
         icons: [
-          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
-          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' }
+          { src: 'mochi-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: 'mochi-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' }
         ]
       }
     })
