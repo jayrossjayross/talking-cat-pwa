@@ -11,7 +11,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['mochi-icon.svg'],
+      includeAssets: ['mochi-icon.svg', 'apple-touch-icon.png'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
         navigateFallbackDenylist: [/^\/api\//],
@@ -27,6 +27,7 @@ export default defineConfig({
         start_url: base,
         scope: base,
         icons: [
+          { src: 'apple-touch-icon.png', sizes: '180x180', type: 'image/png', purpose: 'any' },
           { src: 'mochi-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
           { src: 'mochi-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' }
         ]
