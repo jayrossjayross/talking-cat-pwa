@@ -1,0 +1,1 @@
+Temporary file used only to trigger the pull-request validation workflow.
