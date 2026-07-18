@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  statuses: write
 
 concurrency:
   group: pages
@@ -50,3 +51,31 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  report:
+    name: Report deployment status
+    if: always()
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report deployment success
+        if: needs.build.result == 'success' && needs.deploy.result == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api --method POST
+          repos/${{ github.repository }}/statuses/${{ github.sha }}
+          -f state=success
+          -f context='Deploy Mochi to GitHub Pages'
+          -f description='GitHub Pages deployment passed'
+
+      - name: Report deployment failure
+        if: needs.build.result != 'success' || needs.deploy.result != 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api --method POST
+          repos/${{ github.repository }}/statuses/${{ github.sha }}
+          -f state=failure
+          -f context='Deploy Mochi to GitHub Pages'
+          -f description='GitHub Pages deployment failed'
