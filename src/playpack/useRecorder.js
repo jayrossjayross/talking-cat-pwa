@@ -154,7 +154,7 @@ export default function useRecorder({
 
   function endHoldCopying() {
     holdActiveRef.current = false
-    if (recording) stopCopying()
+    stopCopying()
   }
 
   function toggleCopying() {
